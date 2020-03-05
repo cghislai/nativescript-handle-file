@@ -1,7 +1,7 @@
 {
-  "name": "nativescript-handle-file",
-  "version": "4.0.0",
-  "description": "Receive a url, download and prompt a list of apps wich can open the file.",
+  "name": "nativescript-handle-file-cghislai",
+  "version": "6.4.0",
+  "description": "Receive a url, download and prompt a list of apps which can open the file.",
   "main": "handle-file",
   "typings": "index.d.ts",
   "nativescript": {
@@ -41,13 +41,14 @@
     "email": "rafael.ferlini@gmail.com"
   },
   "contributors": [
-    "João Batista Fulgêncio <jbfulgencio@hotmail.com>"
+    "João Batista Fulgêncio <jbfulgencio@hotmail.com>",
+    "Charles Ghislain <charlyghislain@gmail.com>"
   ],
   "bugs": {
-    "url": "https://github.com/rafear/nativescript-handle-file/issues"
+    "url": "https://github.com/cghislai/nativescript-handle-file"
   },
   "license": "MIT",
-  "homepage": "https://github.com/rafear/nativescript-handle-file",
+  "homepage": "https://github.com/cghislai/nativescript-handle-file",
   "readmeFilename": "README.md",
   "devDependencies": {
     "tns-core-modules": "~6.4.1",
