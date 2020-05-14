@@ -22,24 +22,22 @@ export class HandleFile extends Observable {
         let directoryDestiny: string = params.directory == undefined ? this.directories['downloads'] : this.directories[params.directory];
         let androidDownloadsPath: any = global.android.os.Environment.getExternalStoragePublicDirectory(directoryDestiny).toString();
         let filePath: string = fs.path.join(androidDownloadsPath, params.name);
-        var extension = params.url.split('.').pop();
+        var extension = params.name.split('.').pop();
         var title: string = params.title == undefined ? 'Open file...' : params.title;
 
-        return http.getFile(params.url, filePath).then((file: fs.File) => {
-            try {
-                let intent = new android.content.Intent(android.content.Intent.ACTION_VIEW);
-                let mimeType = this.findExtension(extension);
-                intent.setDataAndType(android.net.Uri.fromFile(new java.io.File(file.path)), mimeType);
-                application.android.foregroundActivity.startActivity(android.content.Intent.createChooser(intent, title));
-            } catch (e) {
-                console.log(e);
-                return false;
-            }
-            return true;
-        }, function (e: Error) {
-            console.log(e);
-            return false;
-        });
+        return http.getFile(params.url, filePath).then(
+            (file: fs.File) => new Promise<boolean>((resolve, reject) => {
+                try {
+                    let intent = new android.content.Intent(android.content.Intent.ACTION_VIEW);
+                    let mimeType = this.findExtension(extension);
+                    intent.setDataAndType(android.net.Uri.fromFile(new java.io.File(file.path)), mimeType);
+                    application.android.foregroundActivity.startActivity(android.content.Intent.createChooser(intent, title));
+                    resolve(true);
+                } catch (e) {
+                    reject(e);
+                }
+            })
+        );
     }
 
     /**

@@ -1,6 +1,6 @@
 {
   "name": "nativescript-handle-file-cghislai",
-  "version": "6.4.0",
+  "version": "6.4.1-rc.1",
   "description": "Receive a url, download and prompt a list of apps which can open the file.",
   "main": "handle-file",
   "typings": "index.d.ts",
